@@ -1,8 +1,22 @@
+/* Definisi Warna Modern */
+:root {
+    --primary: #4f46e5; /* Indigo */
+    --primary-hover: #4338ca;
+    --bg-color: #f8fafc; /* Abu-abu sangat terang */
+    --card-bg: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --success: #10b981;
+}
+
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     margin: 0;
-    padding: 20px;
-    background-color: #f0f4f8;
+    padding: 30px 20px;
+    background-color: var(--bg-color);
+    background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+    background-size: 20px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,65 +24,75 @@ body {
 }
 
 .main-container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    max-width: 900px;
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+    max-width: 950px;
     width: 100%;
 }
 
+/* Header Styling */
 header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+}
+
+.badge {
+    background-color: #e0e7ff;
+    color: var(--primary);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 header h1 {
-    margin: 0;
-    color: #333;
+    margin: 15px 0 5px 0;
+    color: var(--text-main);
     font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
 }
 
 header p {
-    color: #666;
-    margin-top: 5px;
+    color: var(--text-muted);
     font-size: 1.1rem;
+    margin: 0;
 }
 
 .content-wrapper {
     display: flex;
-    gap: 30px;
-    align-items: start;
+    gap: 40px;
+    align-items: flex-start;
 }
 
+/* Canvas Area */
 .canvas-panel {
-    border: 3px solid #ddd;
-    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
     overflow: hidden;
     position: relative;
-    box-shadow: inset 0 0 15px rgba(0,0,0,0.05);
-    /* Menetapkan dimensi statis di desktop persegi agar tidak collapse */
-    width: 500px; /* Lebar statis */
-    height: 500px; /* Tinggi statis (Persegi) */
-    flex-shrink: 0; /* Mencegah collapse */
-    display: flex; /* Untuk pusatkan kanvas di dalamnya jika perlu */
+    background: repeating-conic-gradient(#f1f5f9 0% 25%, #ffffff 0% 50%) 50% / 20px 20px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    width: 500px;
+    height: 500px;
+    flex-shrink: 0;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Memastikan elemen kanvas itu sendiri responsif di dalam wadah */
-.canvas-container {
+.canvas-container, .canvas-container canvas {
     width: 100% !important;
-    height: 100% !important; /* Gunakan tinggi penuh wadah */
-    max-width: 500px !important; /* Menjaga ukuran maksimal */
+    height: 100% !important;
+    max-width: 500px !important;
     max-height: 500px !important;
 }
 
-.canvas-container canvas {
-    width: 100% !important;
-    height: 100% !important;
-}
-
+/* Control Panel */
 .control-panel {
     flex-grow: 1;
     display: flex;
@@ -77,22 +101,45 @@ header p {
     width: 100%;
 }
 
-.control-panel h2 {
-    color: #555;
-    margin-bottom: 5px;
+.step-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
+.step-title i {
+    background: var(--primary);
+    color: white;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 0.8rem;
+}
+
+.step-title h2 {
+    color: var(--text-main);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Upload Box */
 .file-upload-box {
     position: relative;
-    border: 2px dashed #007bff;
-    border-radius: 8px;
+    border: 2px dashed #cbd5e1;
+    border-radius: 16px;
     text-align: center;
     cursor: pointer;
+    background-color: #f8fafc;
     transition: all 0.3s ease;
 }
 
 .file-upload-box:hover {
-    background-color: #e6f7ff;
+    border-color: var(--primary);
+    background-color: #f1f5f9;
 }
 
 #upload-foto {
@@ -106,76 +153,127 @@ header p {
 }
 
 .upload-label {
-    display: block;
-    padding: 20px;
-    color: #007bff;
-    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+    pointer-events: none;
 }
 
-/* Desain Slider Zoom */
-.zoom-control {
-    background: #f8f9fa;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-}
-
-.zoom-control label {
-    display: block;
+.upload-icon {
+    font-size: 2.5rem;
+    color: #94a3b8;
     margin-bottom: 10px;
-    font-weight: bold;
-    color: #444;
+    transition: color 0.3s ease;
 }
 
-#zoom-slider {
-    width: 100%;
-    cursor: pointer;
+.file-upload-box:hover .upload-icon {
+    color: var(--primary);
+}
+
+#upload-status {
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.upload-hint {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* Custom Slider Styling */
+.zoom-control {
+    background: white;
 }
 
 .instr {
-    color: #777;
+    color: var(--text-muted);
     font-size: 0.9rem;
-    line-height: 1.4;
+    line-height: 1.5;
+    margin-top: 5px;
+    margin-bottom: 15px;
 }
 
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: var(--primary);
+    cursor: pointer;
+    margin-top: -8px;
+    box-shadow: 0 2px 6px rgba(79, 70, 229, 0.4);
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    background: #e2e8f0;
+    border-radius: 4px;
+}
+
+/* Tombol Download */
 #download-btn {
-    background-color: #28a745;
+    background-color: var(--primary);
     color: white;
     border: none;
-    padding: 15px;
-    border-radius: 8px;
+    padding: 16px;
+    border-radius: 12px;
     font-size: 1.1rem;
-    font-weight: bold;
+    font-weight: 700;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
 }
 
 #download-btn:disabled {
-    background-color: #a4e0a9;
+    background-color: #cbd5e1;
     cursor: not-allowed;
+    box-shadow: none;
+    color: #94a3b8;
 }
 
 #download-btn:not(:disabled):hover {
-    background-color: #218838;
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 20px -3px rgba(79, 70, 229, 0.4);
 }
 
-/* Responsif untuk layar kecil (mobile) */
+/* Responsif Mobile */
 @media (max-width: 768px) {
-    .content-wrapper {
-        flex-direction: column; /* Tumpuk secara vertikal di seluler */
-    }
-
-    .canvas-panel {
-        width: 100%; /* Gunakan lebar penuh di seluler */
-        max-width: 500px; /* Jaga agar tidak terlalu besar di tablet */
-        margin: 0 auto 20px auto; /* Pusatkan dan beri jarak bawah */
-        /* Hapus tinggi statis di seluler */
-        height: auto; 
-        /* Menggunakan aspect-ratio agar tetap persegi (Rasio 1:1) */
-        aspect-ratio: 1 / 1; 
+    .main-container {
+        padding: 20px;
+        border-radius: 16px;
     }
 
     header h1 {
         font-size: 2rem;
+    }
+
+    .content-wrapper {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .canvas-panel {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        max-width: 500px;
+        margin: 0 auto;
     }
 }

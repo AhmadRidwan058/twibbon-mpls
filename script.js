@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const link = document.createElement('a');
         link.href = dataURL;
-        link.download = 'twibbon-mpls.png'; 
+        link.download = 'mpls-babakanasem2.png'; 
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link); 

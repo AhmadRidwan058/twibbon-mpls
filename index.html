@@ -3,47 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generator Twibbon MPLS SDN Babakan Asem 2</title>
+    <title>Twibbon MPLS SDN Babakan Asem 2</title>
+    
+    <!-- Memuat Font Modern & Ikon -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="main-container">
         <header>
-            <h1>Generator Twibbon MPLS</h1>
-            <p>SDN Babakan Asem 2</p>
+            <span class="badge">Sistem Otomatis</span>
+            <h1>Twibbon MPLS</h1>
+            <p>SDN Babakan Asem 2 - Tahun Ajaran Baru</p>
         </header>
 
         <div class="content-wrapper">
+            <!-- Sisi Kiri: Preview -->
             <div class="canvas-panel">
-                <!-- Area Canvas -->
                 <canvas id="twibbon-canvas" width="500" height="500"></canvas>
             </div>
 
+            <!-- Sisi Kanan: Kontrol -->
             <div class="control-panel">
-                <h2>Unggah Foto Anda</h2>
+                <div class="step-title">
+                    <i class="fa-solid fa-1"></i>
+                    <h2>Unggah Foto Terbaikmu</h2>
+                </div>
+                
                 <div class="file-upload-box">
                     <label for="upload-foto" class="upload-label">
-                        <span id="upload-status">Pilih Foto</span>
+                        <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+                        <span id="upload-status">Klik untuk memilih foto</span>
+                        <span class="upload-hint">Mendukung format JPG, PNG</span>
                     </label>
                     <input type="file" id="upload-foto" accept="image/*">
                 </div>
 
-                <!-- Slider Zoom (Awalnya Disembunyikan) -->
                 <div class="zoom-control" id="zoom-container" style="display: none;">
-                    <label for="zoom-slider">Atur Ukuran Foto:</label>
+                    <div class="step-title" style="margin-top: 15px;">
+                        <i class="fa-solid fa-2"></i>
+                        <h2>Sesuaikan Ukuran</h2>
+                    </div>
+                    <p class="instr">Geser foto langsung di dalam bingkai untuk mengatur posisi.</p>
                     <input type="range" id="zoom-slider" min="0.1" max="3" step="0.01" value="1">
                 </div>
 
-                <p class="instr">Sesuaikan posisi foto Anda (seret) dan ukurannya dengan slider di atas.</p>
-                <button id="download-btn" disabled>Unduh Twibbon</button>
+                <button id="download-btn" disabled>
+                    <i class="fa-solid fa-download"></i> Unduh Twibbon
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Panggil Fabric.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
-    <!-- Panggil script logika -->
     <script src="script.js"></script>
 </body>
 </html>
