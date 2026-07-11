@@ -1,0 +1,181 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.main-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    max-width: 900px;
+    width: 100%;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    margin: 0;
+    color: #333;
+    font-size: 2.5rem;
+}
+
+header p {
+    color: #666;
+    margin-top: 5px;
+    font-size: 1.1rem;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 30px;
+    align-items: start;
+}
+
+.canvas-panel {
+    border: 3px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.05);
+    /* Menetapkan dimensi statis di desktop persegi agar tidak collapse */
+    width: 500px; /* Lebar statis */
+    height: 500px; /* Tinggi statis (Persegi) */
+    flex-shrink: 0; /* Mencegah collapse */
+    display: flex; /* Untuk pusatkan kanvas di dalamnya jika perlu */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Memastikan elemen kanvas itu sendiri responsif di dalam wadah */
+.canvas-container {
+    width: 100% !important;
+    height: 100% !important; /* Gunakan tinggi penuh wadah */
+    max-width: 500px !important; /* Menjaga ukuran maksimal */
+    max-height: 500px !important;
+}
+
+.canvas-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.control-panel {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.control-panel h2 {
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.file-upload-box {
+    position: relative;
+    border: 2px dashed #007bff;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.file-upload-box:hover {
+    background-color: #e6f7ff;
+}
+
+#upload-foto {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.upload-label {
+    display: block;
+    padding: 20px;
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Desain Slider Zoom */
+.zoom-control {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.zoom-control label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #444;
+}
+
+#zoom-slider {
+    width: 100%;
+    cursor: pointer;
+}
+
+.instr {
+    color: #777;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+#download-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#download-btn:disabled {
+    background-color: #a4e0a9;
+    cursor: not-allowed;
+}
+
+#download-btn:not(:disabled):hover {
+    background-color: #218838;
+}
+
+/* Responsif untuk layar kecil (mobile) */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column; /* Tumpuk secara vertikal di seluler */
+    }
+
+    .canvas-panel {
+        width: 100%; /* Gunakan lebar penuh di seluler */
+        max-width: 500px; /* Jaga agar tidak terlalu besar di tablet */
+        margin: 0 auto 20px auto; /* Pusatkan dan beri jarak bawah */
+        /* Hapus tinggi statis di seluler */
+        height: auto; 
+        /* Menggunakan aspect-ratio agar tetap persegi (Rasio 1:1) */
+        aspect-ratio: 1 / 1; 
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+}
