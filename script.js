@@ -94,22 +94,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Fungsi Download
     downloadBtn.addEventListener('click', function() {
-        if (!userImage) return; 
+        if (!userImage) return;
 
         frameImage.bringToFront();
         canvas.renderAll();
 
         const dataURL = canvas.toDataURL({
             format: 'png',
-            quality: 1
+            quality: 1,
+            multiplier: 3 // <--- Tambahkan baris ini agar gambar jadi HD (3x lipat)
         });
 
         const link = document.createElement('a');
         link.href = dataURL;
-        link.download = 'mpls-babakanasem2.png'; 
+        link.download = 'mpls-babakanasem2.png';
         document.body.appendChild(link);
         link.click();
-        document.body.removeChild(link); 
+        document.body.removeChild(link);
     });
 
     // === FITUR CUBIT (PINCH TO ZOOM) UNTUK PONSEl ===
