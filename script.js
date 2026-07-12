@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Fungsi muat bingkai
     function loadFrame() {
-        fabric.Image.fromURL('bingkai.png', function(img) {
+        fabric.Image.fromURL('bingkai.png?v=2026', function(img) {
             frameImage = img;
             frameImage.scaleToWidth(CANVAS_WIDTH);
             frameImage.scaleToHeight(CANVAS_HEIGHT);
