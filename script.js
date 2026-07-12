@@ -111,4 +111,54 @@ document.addEventListener("DOMContentLoaded", function() {
         link.click();
         document.body.removeChild(link); 
     });
+
+    // === FITUR CUBIT (PINCH TO ZOOM) UNTUK PONSEl ===
+    const canvasPanel = document.querySelector('.canvas-panel');
+    let initialDistance = null;
+    let initialScale = 1;
+
+    canvasPanel.addEventListener('touchstart', function(e) {
+        // Jika ada 2 jari yang menyentuh layar
+        if (e.touches.length === 2 && userImage) {
+            e.preventDefault(); 
+            // Hitung jarak awal antara jari pertama dan jari kedua
+            initialDistance = Math.hypot(
+                e.touches[0].clientX - e.touches[1].clientX,
+                e.touches[0].clientY - e.touches[1].clientY
+            );
+            initialScale = userImage.scaleX;
+        }
+    }, { passive: false });
+
+    canvasPanel.addEventListener('touchmove', function(e) {
+        if (e.touches.length === 2 && userImage && initialDistance) {
+            e.preventDefault(); 
+            // Hitung jarak jari yang baru saat digerakkan
+            const currentDistance = Math.hypot(
+                e.touches[0].clientX - e.touches[1].clientX,
+                e.touches[0].clientY - e.touches[1].clientY
+            );
+            
+            // Kalkulasi perubahan skala
+            const scaleFactor = currentDistance / initialDistance;
+            let newScale = initialScale * scaleFactor;
+            
+            // Batasi ukuran (Jangan terlalu kecil atau terlalu raksasa)
+            if (newScale < 0.1) newScale = 0.1;
+            if (newScale > 3) newScale = 3;
+            
+            // Terapkan ke foto dan render ulang
+            userImage.scale(newScale);
+            canvas.renderAll();
+            
+            // Sinkronkan juga dengan posisi slider agar tidak error
+            zoomSlider.value = newScale;
+        }
+    }, { passive: false });
+
+    canvasPanel.addEventListener('touchend', function(e) {
+        if (e.touches.length < 2) {
+            initialDistance = null; // Reset perhitungan saat jari dilepas
+        }
+    });
 });

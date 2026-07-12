@@ -70,6 +70,7 @@ header p {
 }
 
 /* Canvas Area */
+/* Cari bagian ini di style.css dan tambahkan touch-action: none; */
 .canvas-panel {
     border: 1px solid var(--border-color);
     border-radius: 16px;
@@ -83,6 +84,7 @@ header p {
     display: flex;
     justify-content: center;
     align-items: center;
+    touch-action: none; /* <--- TAMBAHKAN BARIS INI */
 }
 
 .canvas-container, .canvas-container canvas {
